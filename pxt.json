@@ -1,0 +1,19 @@
+{
+    "name": "crocoBit",
+    "version": "1.0.0",
+    "description": "Extension for YahBoom YB_Croco_Bit V1.0.0",
+    "license": "MIT",
+    "dependencies": {
+        "core": "*"
+        
+    },
+    "files": [
+        "README.md",
+        "main.ts",
+        "_locales/zh/crocoBit-strings.json"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "public": true
+}
