@@ -3,11 +3,11 @@
 Copyright (C): 2010-2019, Shenzhen Yahboom Tech
 modified from chengengyue
 load dependency
-"crocoBit": "file:../pxt-crocoBit"
+"CrocoKit": "file:../pxt-crocoKit"
 */
 
 //% color="#17ecc1" weight=20 icon="\uf001"
-namespace CrocoBit {
+namespace CrocoKit {
 
     export enum enMusic {
 
@@ -91,7 +91,7 @@ namespace CrocoBit {
 
 
 
-    //% blockId=CrocoBit_Music_Handle block="Music_Handle|%index"
+    //% blockId=CrocoKit_Music_Handle block="Music_Handle|%index"
     //% weight=98
     //% blockGap=10
     //% color="#17ecc1"
@@ -121,7 +121,7 @@ namespace CrocoBit {
         }
     }
 
-    //% blockId=CrocoBit_Touch block="Music Touch return"
+    //% blockId=CrocoKit_Touch block="Music Touch return"
     //% weight=97
     //% blockGap=10
     //% color="#17ecc1"
@@ -137,7 +137,7 @@ namespace CrocoBit {
         return c;
     }
 
-    //% blockId=CrocoBit_TouchButton block="Music Button|%value"
+    //% blockId=CrocoKit_TouchButton block="Music Button|%value"
     //% weight=96
     //% blockGap=10
     //% color="#17ecc1"
@@ -148,7 +148,7 @@ namespace CrocoBit {
         return c;
     }
 
-    //% blockId=CrocoBit_PlayPiano block="Play Piano|tone %value"
+    //% blockId=CrocoKit_PlayPiano block="Play Piano|tone %value"
     //% weight=95
     //% blockGap=10
     //% color="#17ecc1"
@@ -239,7 +239,7 @@ namespace CrocoBit {
 }
 
 //% color="#C814B8" weight=25 icon="\uf1d4"
-namespace crocoBit_Display {
+namespace CrocoKit_Display {
 
     export enum enColor {
 
@@ -269,7 +269,7 @@ namespace crocoBit_Display {
         ON = 1
     }
 
-    //% blockId=crocoBit_Display_LED1 block="LED1|pin %pin|value %value"
+    //% blockId=CrocoKit_Display_LED1 block="LED1|pin %pin|value %value"
     //% weight=5
     //% blockGap=8
     //% color="#C814B8"
@@ -280,7 +280,7 @@ namespace crocoBit_Display {
 
     }
 
-    //% blockId=crocoBit_Display_LED2 block="LED2|pin %pin|value %value"
+    //% blockId=CrocoKit_Display_LED2 block="LED2|pin %pin|value %value"
     //% weight=4
     //% blockGap=8
     //% color="#C814B8"
@@ -292,7 +292,7 @@ namespace crocoBit_Display {
 
     }
 
-    //% blockId=crocoBit_Display_BreathLED block="BreathLED|pin %pin"
+    //% blockId=CrocoKit_Display_BreathLED block="BreathLED|pin %pin"
     //% weight=3
     //% blockGap=8
     //% color="#C814B8"
@@ -312,7 +312,7 @@ namespace crocoBit_Display {
         }
     }
 
-    //% blockId=crocoBit_Display_RGB block="RGB|pin1 %pin1|pin2 %pin2|pin3 %pin3|value1 %value1|value2 %value2|value3 %value3"
+    //% blockId=CrocoKit_Display_RGB block="RGB|pin1 %pin1|pin2 %pin2|pin3 %pin3|value1 %value1|value2 %value2|value3 %value3"
     //% weight=2
     //% blockGap=8
     //% color="#C814B8"
@@ -325,7 +325,7 @@ namespace crocoBit_Display {
         pins.analogWritePin(pin3, value3 * 1024 / 256);
 
     }
-    //% blockId=crocoBit_Display_RGB2 block="RGB|pin1 %pin1|pin2 %pin2|pin3 %pin3|value %value"
+    //% blockId=CrocoKit_Display_RGB2 block="RGB|pin1 %pin1|pin2 %pin2|pin3 %pin3|value %value"
     //% weight=1
     //% blockGap=8
     //% color="#C814B8"
@@ -387,7 +387,7 @@ namespace crocoBit_Display {
 }
 
 //% color="#808080" weight=25 icon="\uf11c"
-namespace crocoBit_Input {
+namespace CrocoKit_Input {
 
     export enum enRocker {
         //% blockId="NoState" block="无"
@@ -409,7 +409,7 @@ namespace crocoBit_Input {
         Realse = 1
     }
 
-    //% blockId=crocoBit_Input_Button block="Button|pin %pin|value %value"
+    //% blockId=CrocoKit_Input_Button block="Button|pin %pin|value %value"
     //% weight=90
     //% blockGap=10
     //% color="#808080"
@@ -419,7 +419,7 @@ namespace crocoBit_Input {
         return pins.digitalReadPin(pin) == value;
     }
 
-    //% blockId=crocoBit_Input_Rocker block="Rocker|pin1 %pin1|pin2 %pin2|value %value"
+    //% blockId=CrocoKit_Input_Rocker block="Rocker|pin1 %pin1|pin2 %pin2|value %value"
     //% weight=91
     //% blockGap=10
     //% color="#808080"
@@ -451,7 +451,7 @@ namespace crocoBit_Input {
         return now_state == value;
     }
 
-    //% blockId=crocoBit_Input_Potentiometer block="Potentiometer|pin %pin"
+    //% blockId=CrocoKit_Input_Potentiometer block="Potentiometer|pin %pin"
     //% weight=100
     //% blockGap=10
     //% color="#808080"
@@ -464,7 +464,7 @@ namespace crocoBit_Input {
 }
 
 //% color="#228B22" weight=25 icon="\uf0b2"
-namespace crocoBit_Sensor {
+namespace CrocoKit_Sensor {
 
     const COLOR_ADD = 0x53;
     const COLOR_REG = 0x00;
@@ -597,7 +597,7 @@ namespace crocoBit_Sensor {
 
 
 
-    //% blockId=crocoBit_Sensor_Light block="Light|pin %pin"
+    //% blockId=CrocoKit_Sensor_Light block="Light|pin %pin"
     //% weight=100
     //% blockGap=10
     //% color="#228B22"
@@ -608,7 +608,7 @@ namespace crocoBit_Sensor {
         return value;
     }
 
-    //% blockId=crocoBit_Sensor_Sound block="Sound|pin %pin"
+    //% blockId=CrocoKit_Sensor_Sound block="Sound|pin %pin"
     //% weight=100
     //% blockGap=10
     //% color="#228B22"
@@ -619,7 +619,7 @@ namespace crocoBit_Sensor {
         return value;
     }
 
-    //% blockId=crocoBit_Input_IR block="IR|pin %pin|value %value"
+    //% blockId=CrocoKit_Input_IR block="IR|pin %pin|value %value"
     //% weight=100
     //% blockGap=10
     //% color="#228B22"
@@ -629,7 +629,7 @@ namespace crocoBit_Sensor {
         return pins.digitalReadPin(pin) == value;
     }
 
-    //% blockId=crocoBit_Sensor_Vibration block="Vibration|pin %pin|value "
+    //% blockId=CrocoKit_Sensor_Vibration block="Vibration|pin %pin|value "
     //% weight=100
     //% blockGap=10
     //% color="#228B22"
@@ -640,7 +640,7 @@ namespace crocoBit_Sensor {
         pins.onPulsed(pin, PulseValue.High, handle);
     }
 
-    //% blockId=crocoBit_Sensor_Hall block="Hall|pin %pin|value "
+    //% blockId=CrocoKit_Sensor_Hall block="Hall|pin %pin|value "
     //% weight=100
     //% blockGap=10
     //% color="#228B22"
@@ -653,7 +653,7 @@ namespace crocoBit_Sensor {
     }
 
 
-    //% blockId=crocoBit_Sensor_GetValRed block="GetValRed"
+    //% blockId=CrocoKit_Sensor_GetValRed block="GetValRed"
     //% blockGap=10
     //% weight=100
     //% color="#228B22"
@@ -666,7 +666,7 @@ namespace crocoBit_Sensor {
         return val_red;
     }
 
-    //% blockId=crocoBit_Sensor_GetValGreen block="GetValGreen"
+    //% blockId=CrocoKit_Sensor_GetValGreen block="GetValGreen"
     //% blockGap=10
     //% weight=100
     //% color="#228B22"
@@ -679,7 +679,7 @@ namespace crocoBit_Sensor {
         return val_green;
     }
 
-    //% blockId=crocoBit_Sensor_GetValBlue block="GetValBlue"
+    //% blockId=CrocoKit_Sensor_GetValBlue block="GetValBlue"
     //% blockGap=10
     //% weight=100
     //% color="#228B22"
@@ -696,9 +696,9 @@ namespace crocoBit_Sensor {
 }
 
 //% color="#ECA40D" weight=25 icon="\uf085"
-namespace crocoBit_Motor {
+namespace CrocoKit_Motor {
 
-    //% blockId=crocoBit_Motor_MotorRun block="Motor|%pin|speed %speed"
+    //% blockId=CrocoKit_Motor_MotorRun block="Motor|%pin|speed %speed"
     //% weight=93
     //% speed.min=0 speed.max=1023
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
@@ -709,7 +709,7 @@ namespace crocoBit_Motor {
     }
 
 
-    //% blockId=crocoBit_Motor_Servo block="Servo|pin %pin|value %value"
+    //% blockId=CrocoKit_Motor_Servo block="Servo|pin %pin|value %value"
     //% weight=100
     //% blockGap=10
     //% value.min=0 value.max=180
@@ -721,7 +721,7 @@ namespace crocoBit_Motor {
     }
 
 
-    //% blockId=crocoBit_Motor_MotorStop block="MotorStop |pin %pin"
+    //% blockId=CrocoKit_Motor_MotorStop block="MotorStop |pin %pin"
     //% weight=91
     //% blockGap=50
     export function MotorStop(pin: AnalogPin): void {
