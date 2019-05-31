@@ -53,7 +53,61 @@ namespace CrocoKit_Sensor {
         let val = pins.i2cReadNumber(addr, NumberFormat.UInt8BE);
         return val;
     }
+    
+    function setRegConfig(): void {
+        i2cwrite(COLOR_ADD, COLOR_REG, 0x06);
+        i2cwrite(COLOR_ADD, 0x04, 0x41);
+        i2cwrite(COLOR_ADD, 0x05, 0x01);
+    }
 
+    function initColorI2C(): void {
+        setRegConfig();
+        initialized = true;
+    }
+
+    function GetRGB(): void {
+        pins.i2cWriteNumber(COLOR_ADD, COLOR_R, NumberFormat.UInt8BE);
+        let buff_R = pins.i2cReadBuffer(COLOR_ADD, 2);
+
+        pins.i2cWriteNumber(COLOR_ADD, COLOR_G, NumberFormat.UInt8BE);
+        let buff_G = pins.i2cReadBuffer(COLOR_ADD, 2);
+
+        pins.i2cWriteNumber(COLOR_ADD, COLOR_B, NumberFormat.UInt8BE);
+        let buff_B = pins.i2cReadBuffer(COLOR_ADD, 2);
+
+        let Red = (buff_R[1] & 0xff) << 8 | (buff_R[0] & 0xff);
+        let Green = (buff_G[1] & 0xff) << 8 | (buff_G[0] & 0xff);
+        let Blue = (buff_B[1] & 0xff) << 8 | (buff_B[0] & 0xff);
+
+        if (Red > 4500) Red = 2300;
+        if (Green > 7600) Green = 4600;
+        if (Blue > 4600) Blue = 2700;
+
+        val_red = Math.map(Red, 0, 2300, 0, 255);
+        val_green = Math.map(Green, 0, 4600, 0, 255);
+        val_blue = Math.map(Blue, 0, 2700, 0, 255);
+
+        if (val_red == val_green && val_red == val_blue) {
+            val_red = 255;
+            val_green = 255;
+            val_blue == 255;
+        }
+        else if (val_red > val_green && val_red > val_blue) {
+            val_red = 255;
+            val_green /= 2;
+            val_blue /= 2;
+        }
+        else if (val_green > val_red && val_green > val_blue) {
+            val_green = 255;
+            val_red /= 2;
+            val_blue /= 2;
+        }
+        else if (val_blue > val_red && val_blue > val_green) {
+            val_blue = 255;
+            val_red /= 2;
+            val_green /= 2;
+        }
+    }
     //% blockId=CrocoKit_Sensor_Light block="Light|pin %pin"
     //% weight=100
     //% blockGap=20
