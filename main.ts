@@ -65,62 +65,7 @@ namespace CrocoKit_Sensor {
         initialized = true;
     }
 
-    function GetRGB(): void {
-        //let buff_R = pins.createBuffer(2);
-        //let buff_G = pins.createBuffer(2);
-        //let buff_B = pins.createBuffer(2);
-        
-        // buff_R[0] = i2cread(COLOR_ADD, COLOR_R);
-        // buff_R[1] = i2cread(COLOR_ADD, 0x11);
-        
-        // buff_G[0] = i2cread(COLOR_ADD, COLOR_G);
-        // buff_G[1] = i2cread(COLOR_ADD, 0x0e);
-        
-        // buff_B[0] = i2cread(COLOR_ADD, COLOR_B);
-        // buff_B[1] = i2cread(COLOR_ADD, 0x14);
-
-        // pins.i2cWriteNumber(COLOR_ADD, COLOR_R, NumberFormat.UInt8BE);
-        // buff_R = pins.i2cReadBuffer(COLOR_ADD, 2);
-
-        // pins.i2cWriteNumber(COLOR_ADD, COLOR_G, NumberFormat.UInt8BE);
-        // buff_G = pins.i2cReadBuffer(COLOR_ADD, 2);
-
-        // pins.i2cWriteNumber(COLOR_ADD, COLOR_B, NumberFormat.UInt8BE);
-        // buff_B = pins.i2cReadBuffer(COLOR_ADD, 2);
-
-        // let Red = (buff_R[1] & 0xff) << 8 | (buff_R[0] & 0xff);
-        // let Green = (buff_G[1] & 0xff) << 8 | (buff_G[0] & 0xff);
-        // let Blue = (buff_B[1] & 0xff) << 8 | (buff_B[0] & 0xff);
-
-        // if (Red > 4500) Red = 2300;
-        // if (Green > 7600) Green = 4600;
-        // if (Blue > 4600) Blue = 2700;
-
-        // val_red = Math.map(Red, 0, 2300, 0, 255);
-        // val_green = Math.map(Green, 0, 4600, 0, 255);
-        // val_blue = Math.map(Blue, 0, 2700, 0, 255);
-
-        // if (val_red == val_green && val_red == val_blue) {
-        //     val_red = 255;
-        //     val_green = 255;
-        //     val_blue == 255;
-        // }
-        // else if (val_red > val_green && val_red > val_blue) {
-        //     val_red = 255;
-        //     val_green /= 2;
-        //     val_blue /= 2;
-        // }
-        // else if (val_green > val_red && val_green > val_blue) {
-        //     val_green = 255;
-        //     val_red /= 2;
-        //     val_blue /= 2;
-        // }
-        // else if (val_blue > val_red && val_blue > val_green) {
-        //     val_blue = 255;
-        //     val_red /= 2;
-        //     val_green /= 2;
-        // }
-    }
+    
 
     //% blockId=CrocoKit_Sensor_Light block="Light|pin %pin"
     //% weight=100
