@@ -70,14 +70,14 @@ namespace CrocoKit_Sensor {
         let buff_G = pins.createBuffer(2);
         let buff_B = pins.createBuffer(2);
         
-        buff_R[0] = i2cread(COLOR_ADD, COLOR_R);
-        buff_R[1] = i2cread(COLOR_ADD, 0x11);
+        // buff_R[0] = i2cread(COLOR_ADD, COLOR_R);
+        // buff_R[1] = i2cread(COLOR_ADD, 0x11);
         
-        buff_G[0] = i2cread(COLOR_ADD, COLOR_G);
-        buff_G[1] = i2cread(COLOR_ADD, 0x0e);
+        // buff_G[0] = i2cread(COLOR_ADD, COLOR_G);
+        // buff_G[1] = i2cread(COLOR_ADD, 0x0e);
         
-        buff_B[0] = i2cread(COLOR_ADD, COLOR_B);
-        buff_B[1] = i2cread(COLOR_ADD, 0x14);
+        // buff_B[0] = i2cread(COLOR_ADD, COLOR_B);
+        // buff_B[1] = i2cread(COLOR_ADD, 0x14);
 
         // pins.i2cWriteNumber(COLOR_ADD, COLOR_R, NumberFormat.UInt8BE);
         // buff_R = pins.i2cReadBuffer(COLOR_ADD, 2);
@@ -121,6 +121,7 @@ namespace CrocoKit_Sensor {
         //     val_green /= 2;
         // }
     }
+    
     //% blockId=CrocoKit_Sensor_Light block="Light|pin %pin"
     //% weight=100
     //% blockGap=20
