@@ -66,9 +66,9 @@ namespace CrocoKit_Sensor {
     }
 
     function GetRGB(): void {
-        let buff_R = pins.createBuffer(2);
-        let buff_G = pins.createBuffer(2);
-        let buff_B = pins.createBuffer(2);
+        //let buff_R = pins.createBuffer(2);
+        //let buff_G = pins.createBuffer(2);
+        //let buff_B = pins.createBuffer(2);
         
         // buff_R[0] = i2cread(COLOR_ADD, COLOR_R);
         // buff_R[1] = i2cread(COLOR_ADD, 0x11);
@@ -121,7 +121,7 @@ namespace CrocoKit_Sensor {
         //     val_green /= 2;
         // }
     }
-    
+
     //% blockId=CrocoKit_Sensor_Light block="Light|pin %pin"
     //% weight=100
     //% blockGap=20
