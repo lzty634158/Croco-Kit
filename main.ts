@@ -9,6 +9,32 @@ load dependency
 
 //% color="#228B22" weight=25 icon="\uf0b2"
 namespace CrocoKit_Sensor {
+    const COLOR_ADD = 0x53;
+    const COLOR_REG = 0x00;
+    const COLOR_R = 0x10;
+    const COLOR_G = 0x0D;
+    const COLOR_B = 0x13;
+
+    let initialized = false;
+    let val_red = 0;
+    let val_green = 0;
+    let val_blue = 0;
+
+    export enum enObstacle {
+        //% blockId="Obstacle" block="Obstacle"
+        Obstacle = 0,
+        //% blockId="NoObstacle" block="NoObstacle"
+        NoObstacle = 1
+    }
+
+    export enum enGetRGB {
+        //% blockId="GetValueR" block="GetValueR"
+        GetValueR = 0,
+        //% blockId="GetValueG" block="GetValueG"
+        GetValueG = 1,
+        //% blockId="GetValueB" block="GetValueB"
+        GetValueB = 2
+    }
     
     //% blockId=CrocoKit_Sensor_Light block="Light|pin %pin"
     //% weight=100
