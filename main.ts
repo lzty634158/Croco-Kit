@@ -79,9 +79,9 @@ namespace CrocoKit_Sensor {
         // pins.i2cWriteNumber(COLOR_ADD, COLOR_B, NumberFormat.UInt8BE);
         // buff_B = pins.i2cReadBuffer(COLOR_ADD, 2);
 
-        let Red = (buff_R[1] & 0xff) << 8 | (buff_R[0] & 0xff);
-        let Green = (buff_G[1] & 0xff) << 8 | (buff_G[0] & 0xff);
-        let Blue = (buff_B[1] & 0xff) << 8 | (buff_B[0] & 0xff);
+        let Red = 255; //(buff_R[1] & 0xff) << 8 | (buff_R[0] & 0xff);
+        let Green = 0; //(buff_G[1] & 0xff) << 8 | (buff_G[0] & 0xff);
+        let Blue = 0;  //(buff_B[1] & 0xff) << 8 | (buff_B[0] & 0xff);
 
         if (Red > 4500) Red = 2300;
         if (Green > 7600) Green = 4600;
