@@ -159,7 +159,7 @@ namespace CrocoKit_Sensor {
         return 0;
     }
 
-    //% blockId=CrocoKit_Input_IR block="IR|pin %pin|value %value"
+    //% blockId=CrocoKit_Sensor_IR block="IR|pin %pin|value %value"
     //% weight=97
     //% blockGap=20
     //% color="#228B22"
