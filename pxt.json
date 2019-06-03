@@ -1,20 +1,21 @@
 {
-    "name": "crocoKit",
-    "version": "1.0.0",
-    "description": "Extension for YahBoom YB_Croco_Kit V1.0.0",
-    "license": "MIT",
+    "name": "Croco-Kit",
+    "version": "1.0.5",
+    "description": "Extension for YahBoom YB_Croco_Kit V1.0.5",
     "dependencies": {
-        "core": "*"
-        
+        "core": "*",
+        "radio": "*",
+        "LEDBit": "github:lzty634158/LED-Bit"
     },
     "files": [
         "README.md",
         "main.ts",
-        "_locales/zh-cn/crocoKit-strings.json",
-        "_locales/zh-tw/crocoKit-strings.json"
+        "_locales/zh-cn/Croco-Kit-strings.json",
+        "_locales/zh-tw/Croco-Kit-strings.json"
     ],
     "testFiles": [
         "test.ts"
     ],
-    "public": true
+    "public": false,
+    "license": "MIT"
 }
