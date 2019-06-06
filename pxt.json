@@ -1,7 +1,7 @@
 {
     "name": "Croco-Kit",
-    "version": "1.0.5",
-    "description": "Extension for YahBoom YB_Croco_Kit V1.0.5",
+    "version": "1.0.6",
+    "description": "Extension for YahBoom YB_Croco_Kit V1.0.6",
     "dependencies": {
         "core": "*",
         "radio": "*",

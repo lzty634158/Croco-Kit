@@ -4,6 +4,7 @@
     "CrocoKit.Touch|block": "音乐触摸返回",
     "CrocoKit.TouchButton|block": "音乐按钮|%value",
     "CrocoKit.PlayPiano|block": "弹钢琴|音调 %value",
+    "CrocoKit.KeyBoard_Touch|block":"键盘触摸|返回 %value",
     "CrocoKit.KeyBoard_SetBaudRate|block": "USB串口 设置波特率|%baudRate",
     "CrocoKit.KeyBoard_Number|block": "串口 发送数字|%value",
     "CrocoKit.KeyBoard|block": "键盘按键|%key",

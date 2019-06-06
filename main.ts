@@ -732,8 +732,61 @@ namespace CrocoKit {
         }
     }
 
-    //% blockId=CrocoKit_KeyBoard_SetBaudRate block="KeyBoard SetBaudRate|%baudRate"
+    //% blockId=CrocoKit_KeyBoard_Touch block="KeyBoard Touch Return|value %value"
     //% weight=94
+    //% blockGap=20 
+    //% color="#8FBC8F"
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    export function KeyBoard_Touch(value: touch): boolean {
+        let a = 0;
+        let b = 0;
+        let c = 0;
+        let temp = 0;
+        pins.i2cWriteNumber(0x50, 8, NumberFormat.UInt8BE, false);
+        a = pins.i2cReadNumber(0x50, NumberFormat.UInt8BE, true);
+        b = pins.i2cReadNumber(0x50, NumberFormat.UInt8BE, false);
+        c = (b << 8) | a;
+        if ((c & temp) != 0) {
+            c = c & temp;
+        } else {
+            switch (value) {
+                case touch.None:
+                    return (c & touch.None) == 0;
+                    break;
+                case touch.C:
+                    return (c & touch.C) == 0x0001;            
+                    break;
+                case touch.D:
+                    return (c & touch.D) == 0x0002;
+                    break;
+                case touch.E:
+                    return (c & touch.E) == 0x0004;
+                    break;
+                case touch.F:
+                    return (c & touch.F) == 0x0008;
+                    break;
+                case touch.G:
+                    return (c & touch.G) == 0x0010;
+                    break;
+                case touch.A:
+                    return (c & touch.A) == 0x0020;
+                    break;
+                case touch.B:
+                    return (c & touch.B) == 0x0040;
+                    break;
+                case touch.CH:
+                    return (c & touch.CH) == 0x0080;
+                    break;
+                default:
+                    break;
+            } 
+        }
+        return false;
+    }
+
+
+    //% blockId=CrocoKit_KeyBoard_SetBaudRate block="KeyBoard SetBaudRate|%baudRate"
+    //% weight=93
     //% blockGap=20 
     //% color="#8FBC8F"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
@@ -742,7 +795,7 @@ namespace CrocoKit {
     }
 
     //% blockId=CrocoKit_KeyBoard block="KeyBoard|%key"
-    //% weight=93
+    //% weight=92
     //% blockGap=20 
     //% color="#8FBC8F"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
@@ -763,7 +816,7 @@ namespace CrocoKit {
     }
 
     //% blockId=CrocoKit_KeyBoard_Number block="KeyBoard sendNumber|%value"
-    //% weight=92
+    //% weight=91
     //% blockGap=20 
     //% color="#8FBC8F"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
@@ -772,7 +825,7 @@ namespace CrocoKit {
     }
 
     //% blockId=CrocoKit_KeyBoard_Keys block="KeyBoard sendKeys|%key"
-    //% weight=91
+    //% weight=90
     //% blockGap=20 
     //% color="#8FBC8F"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
