@@ -451,6 +451,13 @@ namespace CrocoKit_Motor {
 //% color="#8FBC8F" weight=21 icon="\uf001"
 namespace CrocoKit {
 
+    let key_state = 0;
+    let old_key = 0;
+    let button_state = 0;
+    let old_button = 0;
+    let key_state_1 = 0;
+    let old_key_1 = 0;
+
     export enum enMusic {
         dadadum = 0,
         entertainer,
@@ -472,6 +479,18 @@ namespace CrocoKit {
         jump_down,
         power_up,
         power_down
+    }
+
+    export enum touch_pin {
+        None = 0,
+        P2 = 2,
+        P5 = 5,
+        P8 = 8,
+        P11 = 11,
+        P12 = 12,
+        P13 = 13,
+        P14 = 14,
+        P15 = 15
     }
 
     export enum touch {
@@ -544,7 +563,32 @@ namespace CrocoKit {
         //% blockId="VK_A" block="VK_A"
         VK_A = 65,
         //% blockId="VK_D" block="VK_D"
-        VK_D = 68
+        VK_D = 68,
+        //% blockId="VK_J" block="VK_J"
+        VK_J = 74,
+        //% blockId="VK_K" block="VK_K"
+        VK_K = 75,
+
+        //% blockId="VK_LEFT_Release" block="VK_LEFT_Release"
+        VK_LEFT_Release = 7,
+        //% blockId="VK_UP_Release" block="VK_UP_Release"
+        VK_UP_Release = 8,
+        //% blockId="VK_RIGHT_Release" block="VK_RIGHT_Release"
+        VK_RIGHT_Release = 9,
+        //% blockId="VK_DOWN_Release" block="VK_DOWN_Release"
+        VK_DOWN_Release = 10,
+        //% blockId="VK_W_Release" block="VK_W_Release"
+        VK_W_Release = 11,
+        //% blockId="VK_S_Release" block="VK_S_Release"
+        VK_S_Release = 12,
+        //% blockId="VK_A_Release" block="VK_A_Release"
+        VK_A_Release = 13,
+        //% blockId="VK_D_Release" block="VK_D_Release"
+        VK_D_Release = 14,
+        //% blockId="VK_J_Release" block="VK_J_Release"
+        VK_J_Release = 15,
+        //% blockId="VK_K_Release" block="VK_K_Release"
+        VK_K_Release = 16,
     }
 
     function i2cwrite(addr: number, reg: number, value: number) {
@@ -737,7 +781,7 @@ namespace CrocoKit {
     //% blockGap=20 
     //% color="#8FBC8F"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    export function KeyBoard_Touch(value: touch): boolean {
+    export function KeyBoard_Touch(value: touch_pin): boolean {
         let a = 0;
         let b = 0;
         let c = 0;
@@ -750,36 +794,36 @@ namespace CrocoKit {
             c = c & temp;
         } else {
             switch (value) {
-                case touch.None:
+                case touch_pin.None:
                     return (c & touch.None) == 0;
                     break;
-                case touch.C:
-                    return (c & touch.C) == 0x0001;            
+                case touch_pin.P2:
+                    return (c & touch.C) == 0x0001;
                     break;
-                case touch.D:
+                case touch_pin.P5:
                     return (c & touch.D) == 0x0002;
                     break;
-                case touch.E:
+                case touch_pin.P8:
                     return (c & touch.E) == 0x0004;
                     break;
-                case touch.F:
+                case touch_pin.P11:
                     return (c & touch.F) == 0x0008;
                     break;
-                case touch.G:
+                case touch_pin.P12:
                     return (c & touch.G) == 0x0010;
                     break;
-                case touch.A:
+                case touch_pin.P13:
                     return (c & touch.A) == 0x0020;
                     break;
-                case touch.B:
+                case touch_pin.P14:
                     return (c & touch.B) == 0x0040;
                     break;
-                case touch.CH:
+                case touch_pin.P15:
                     return (c & touch.CH) == 0x0080;
                     break;
                 default:
                     break;
-            } 
+            }
         }
         return false;
     }
@@ -801,17 +845,170 @@ namespace CrocoKit {
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function KeyBoard(key: enKeyBoard): void {
         switch (key) {
-            case enKeyBoard.VK_UP: serial.writeString("&"); break;
-            case enKeyBoard.VK_DOWN: serial.writeString("("); break;
-            case enKeyBoard.VK_LEFT: serial.writeString("%"); break;
-            case enKeyBoard.VK_RIGHT: serial.writeString("'"); break;
-            case enKeyBoard.VK_SPACE: serial.writeString(" "); break;
-            case enKeyBoard.VK_DELETE: serial.writeString("."); break;
-            case enKeyBoard.VK_W: serial.writeString("W"); break;
-            case enKeyBoard.VK_S: serial.writeString("S"); break;
-            case enKeyBoard.VK_A: serial.writeString("A"); break;
-            case enKeyBoard.VK_D: serial.writeString("D"); break;
-            default: break;
+            case enKeyBoard.VK_UP:
+                key_state_1 = 1;
+                if (key_state_1 != old_key_1) {
+                    serial.writeString("$&1#");
+                    old_key_1 = 1;
+                }
+                break;
+            case enKeyBoard.VK_UP_Release:
+                key_state_1 = 0;
+                if (key_state_1 != old_key_1) {
+                    serial.writeString("$&0#");
+                    old_key_1 = 0;
+                }
+                break;
+
+            case enKeyBoard.VK_DOWN:
+                key_state_1 = 1;
+                if (key_state_1 != old_key_1) {
+                    serial.writeString("$(1#");
+                    old_key_1 = 1;
+                }
+                break;
+            case enKeyBoard.VK_DOWN_Release:
+                key_state_1 = 0;
+                if (key_state_1 != old_key_1) {
+                    serial.writeString("$(0#");
+                    old_key_1 = 0;
+                }
+                break;
+
+            case enKeyBoard.VK_LEFT:
+                key_state = 1;
+                if (key_state != old_key) {
+                    serial.writeString("$%1#");
+                    old_key = 1;
+                }
+                break;
+            case enKeyBoard.VK_LEFT_Release:
+                key_state = 0;
+                if (key_state != old_key) {
+                    serial.writeString("$%0#");
+                    old_key = 0;
+                }
+                break;
+
+            case enKeyBoard.VK_RIGHT:
+                key_state = 1;
+                if (key_state != old_key) {
+                    serial.writeString("$'1#");
+                    old_key = 1;
+                }
+                break;
+            case enKeyBoard.VK_RIGHT_Release:
+                key_state = 0;
+                if (key_state != old_key) {
+                    serial.writeString("$'0#");
+                    old_key = 0;
+                }
+                break;
+
+            case enKeyBoard.VK_SPACE:
+                serial.writeString("$ 1#");
+                basic.pause(50);
+                serial.writeString("$ 0#");
+                break;
+
+            case enKeyBoard.VK_DELETE:
+                serial.writeString("$.1#");
+                basic.pause(50);
+                serial.writeString("$.0#");
+                break;
+
+            case enKeyBoard.VK_W:
+                key_state_1 = 1;
+                if (key_state_1 != old_key_1) {
+                    serial.writeString("$W1#");
+                    old_key_1 = 1;
+                }
+                break;
+            case enKeyBoard.VK_W_Release:
+                key_state_1 = 0;
+                if (key_state_1 != old_key_1) {
+                    serial.writeString("$W0#");
+                    old_key_1 = 0;
+                }
+                break;
+
+            case enKeyBoard.VK_S:
+                key_state_1 = 1;
+                if (key_state_1 != old_key_1) {
+                    serial.writeString("$S1#");
+                    old_key_1 = 1;
+                }
+                break;
+            case enKeyBoard.VK_S_Release:
+                key_state_1 = 0;
+                if (key_state_1 != old_key_1) {
+                    serial.writeString("$S0#");
+                    old_key_1 = 0;
+                }
+                break;
+
+            case enKeyBoard.VK_A:
+                key_state = 1;
+                if (key_state != old_key) {
+                    serial.writeString("$A1#");
+                    old_key = 1;
+                }
+                break;
+            case enKeyBoard.VK_A_Release:
+                key_state = 0;
+                if (key_state != old_key) {
+                    serial.writeString("$A0#");
+                    old_key = 0;
+                }
+                break;
+
+            case enKeyBoard.VK_D:
+                key_state = 1;
+                if (key_state != old_key) {
+                    serial.writeString("$D1#");
+                    old_key = 1;
+                }
+                break;
+            case enKeyBoard.VK_D_Release:
+                key_state = 0;
+                if (key_state != old_key) {
+                    serial.writeString("$D0#");
+                    old_key = 0;
+                }
+                break;
+
+            case enKeyBoard.VK_J:
+                button_state = 1;
+                if (button_state != old_button) {
+                    serial.writeString("$J1#");
+                    old_button = 1;
+                }
+                break;
+            case enKeyBoard.VK_J_Release:
+                button_state = 0;
+                if (button_state != old_button) {
+                    serial.writeString("$J0#");
+                    old_button = 0;
+                }
+                break;
+
+            case enKeyBoard.VK_K:
+                button_state = 1;
+                if (button_state != old_button) {
+                    serial.writeString("$K1#");
+                    old_button = 1;
+                }
+                break;
+            case enKeyBoard.VK_K_Release:
+                button_state = 0;
+                if (button_state != old_button) {
+                    serial.writeString("$K0#");
+                    old_button = 0;
+                }
+                break;
+
+            default:
+                break;
         }
     }
 
@@ -819,9 +1016,14 @@ namespace CrocoKit {
     //% weight=91
     //% blockGap=20 
     //% color="#8FBC8F"
+    //% value.min=0 value.max=9
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function KeyBoard_Number(value: number): void {
-        serial.writeNumber(value);
+        if (value >= 0 && value <= 9) {
+            serial.writeString("$" + value + "1#");
+            basic.pause(50);
+            serial.writeString("$" + value + "0#");
+        }
     }
 
     //% blockId=CrocoKit_KeyBoard_Keys block="KeyBoard sendKeys|%key"
@@ -831,32 +1033,136 @@ namespace CrocoKit {
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function KeyBoard_Keys(key: enKeys): void {
         switch (key) {
-            case enKeys.A: serial.writeString("A"); break;
-            case enKeys.B: serial.writeString("B"); break;
-            case enKeys.C: serial.writeString("C"); break;
-            case enKeys.D: serial.writeString("D"); break;
-            case enKeys.E: serial.writeString("E"); break;
-            case enKeys.F: serial.writeString("F"); break;
-            case enKeys.G: serial.writeString("G"); break;
-            case enKeys.H: serial.writeString("H"); break;
-            case enKeys.I: serial.writeString("I"); break;
-            case enKeys.J: serial.writeString("J"); break;
-            case enKeys.K: serial.writeString("K"); break;
-            case enKeys.L: serial.writeString("L"); break;
-            case enKeys.M: serial.writeString("M"); break;
-            case enKeys.N: serial.writeString("N"); break;
-            case enKeys.O: serial.writeString("O"); break;
-            case enKeys.P: serial.writeString("P"); break;
-            case enKeys.Q: serial.writeString("Q"); break;
-            case enKeys.R: serial.writeString("R"); break;
-            case enKeys.S: serial.writeString("S"); break;
-            case enKeys.T: serial.writeString("T"); break;
-            case enKeys.U: serial.writeString("U"); break;
-            case enKeys.V: serial.writeString("V"); break;
-            case enKeys.W: serial.writeString("W"); break;
-            case enKeys.X: serial.writeString("X"); break;
-            case enKeys.Y: serial.writeString("Y"); break;
-            case enKeys.Z: serial.writeString("Z"); break;
+            case enKeys.A:
+                serial.writeString("$A1#");
+                basic.pause(50);
+                serial.writeString("$A0#");
+                break;
+            case enKeys.B:
+                serial.writeString("$B1#");
+                basic.pause(50);
+                serial.writeString("$B0#");
+                break;
+            case enKeys.C:
+                serial.writeString("$C1#");
+                basic.pause(50);
+                serial.writeString("$C0#");
+                break;
+            case enKeys.D:
+                serial.writeString("$D1#");
+                basic.pause(50);
+                serial.writeString("$D0#");
+                break;
+            case enKeys.E:
+                serial.writeString("$E1#");
+                basic.pause(50);
+                serial.writeString("$E0#");
+                break;
+            case enKeys.F:
+                serial.writeString("$F1#");
+                basic.pause(50);
+                serial.writeString("$F0#");
+                break;
+            case enKeys.G:
+                serial.writeString("$G1#");
+                basic.pause(50);
+                serial.writeString("$G0#");
+                break;
+            case enKeys.H:
+                serial.writeString("$H1#");
+                basic.pause(50);
+                serial.writeString("$H0#");
+                break;
+            case enKeys.I:
+                serial.writeString("$I1#");
+                basic.pause(50);
+                serial.writeString("$I0#");
+                break;
+            case enKeys.J:
+                serial.writeString("$J1#");
+                basic.pause(50);
+                serial.writeString("$J0#");
+                break;
+            case enKeys.K:
+                serial.writeString("$K1#");
+                basic.pause(50);
+                serial.writeString("$K0#");
+                break;
+            case enKeys.L:
+                serial.writeString("$L1#");
+                basic.pause(50);
+                serial.writeString("$L0#");
+                break;
+            case enKeys.M:
+                serial.writeString("$M1#");
+                basic.pause(50);
+                serial.writeString("$M0#");
+                break;
+            case enKeys.N:
+                serial.writeString("$N1#");
+                basic.pause(50);
+                serial.writeString("$N0#");
+                break;
+            case enKeys.O:
+                serial.writeString("$O1#");
+                basic.pause(50);
+                serial.writeString("$O0#");
+                break;
+            case enKeys.P:
+                serial.writeString("$P1#");
+                basic.pause(50);
+                serial.writeString("$P0#");
+                break;
+            case enKeys.Q:
+                serial.writeString("$Q1#");
+                basic.pause(50);
+                serial.writeString("$Q0#");
+                break;
+            case enKeys.R:
+                serial.writeString("$R1#");
+                basic.pause(50);
+                serial.writeString("$R0#");
+                break;
+            case enKeys.S:
+                serial.writeString("$S1#");
+                basic.pause(50);
+                serial.writeString("$S0#");
+                break;
+            case enKeys.T:
+                serial.writeString("$T1#");
+                basic.pause(50);
+                serial.writeString("$T0#");
+                break;
+            case enKeys.U:
+                serial.writeString("$U1#");
+                basic.pause(50);
+                serial.writeString("$U0#");
+                break;
+            case enKeys.V:
+                serial.writeString("$V1#");
+                basic.pause(50);
+                serial.writeString("$V0#");
+                break;
+            case enKeys.W:
+                serial.writeString("$W1#");
+                basic.pause(50);
+                serial.writeString("$W0#");
+                break;
+            case enKeys.X:
+                serial.writeString("$X1#");
+                basic.pause(50);
+                serial.writeString("$X0#");
+                break;
+            case enKeys.Y:
+                serial.writeString("$Y1#");
+                basic.pause(50);
+                serial.writeString("$Y0#");
+                break;
+            case enKeys.Z:
+                serial.writeString("$Z1#");
+                basic.pause(50);
+                serial.writeString("$Z0#");
+                break;
             default: break;
         }
     }
