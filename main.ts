@@ -670,7 +670,7 @@ namespace CrocoKit {
         let b = 0;
         let c = 0;
         pins.i2cWriteNumber(0x50, 8, NumberFormat.UInt8BE, false);
-        a = pins.i2cReadNumber(0x50, NumberFormat.UInt8BE, true);
+        a = pins.i2cReadNumber(0x50, NumberFormat.UInt8BE, false); //true->false
         b = pins.i2cReadNumber(0x50, NumberFormat.UInt8BE, false);
         c = (b << 8) | a;
         return c;
@@ -699,7 +699,7 @@ namespace CrocoKit {
         let c = 0;
         let temp = 0;
         pins.i2cWriteNumber(0x50, 8, NumberFormat.UInt8BE, false);
-        a = pins.i2cReadNumber(0x50, NumberFormat.UInt8BE, true);
+        a = pins.i2cReadNumber(0x50, NumberFormat.UInt8BE, false); //true->false
         b = pins.i2cReadNumber(0x50, NumberFormat.UInt8BE, false);
         c = (b << 8) | a;
 
@@ -723,8 +723,8 @@ namespace CrocoKit {
             } else if (c & touch.CH) {
                 music.ringTone(262);
             } else if (c == touch.None) {
-                //music.ringTone(0);
-                pins.digitalWritePin(DigitalPin.P0, 0);
+                music.ringTone(0);
+                //pins.digitalWritePin(DigitalPin.P0, 0);
             }
         }
         else if (value == 2) {
@@ -747,8 +747,8 @@ namespace CrocoKit {
             } else if (c & touch.CH) {
                 music.ringTone(523);
             } else if (c == touch.None) {
-                //music.ringTone(0);
-                pins.digitalWritePin(DigitalPin.P0, 0);
+                music.ringTone(0);
+                //pins.digitalWritePin(DigitalPin.P0, 0);
             }
         }
         else if (value == 3) {
@@ -771,8 +771,8 @@ namespace CrocoKit {
             } else if (c & touch.CH) {
                 music.ringTone(1046);
             } else if (c == touch.None) {
-                //music.ringTone(0);
-                pins.digitalWritePin(DigitalPin.P0, 0);
+                music.ringTone(0);
+                //pins.digitalWritePin(DigitalPin.P0, 0);
             }
         }
     }
@@ -788,7 +788,7 @@ namespace CrocoKit {
         let c = 0;
         let temp = 0;
         pins.i2cWriteNumber(0x50, 8, NumberFormat.UInt8BE, false);
-        a = pins.i2cReadNumber(0x50, NumberFormat.UInt8BE, true);
+        a = pins.i2cReadNumber(0x50, NumberFormat.UInt8BE, false); //true->false
         b = pins.i2cReadNumber(0x50, NumberFormat.UInt8BE, false);
         c = (b << 8) | a;
         if ((c & temp) != 0) {

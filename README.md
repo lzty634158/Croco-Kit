@@ -1,6 +1,6 @@
 # YB_Croco:Kit
 
-Extension for Yahboom YB_Croco:Kit V1.1
+Extension for Yahboom YB_Croco:Kit V2.0
 
 ## License
 
