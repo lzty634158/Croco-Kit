@@ -187,9 +187,12 @@ namespace CrocoKit_Sensor {
     //% color="#228B22"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=5
     export function Vibration(pin: DigitalPin, handle: () => void): void {
-        pins.setPull(pin, PinPullMode.PullUp);
-        pins.setEvents(pin, PinEventType.Pulse);
-        pins.onPulsed(pin, PulseValue.High, handle);
+        let Pin = 0;
+        // pins.setPull(pin, PinPullMode.PullUp);
+        // pins.setEvents(pin, PinEventType.Pulse);
+        // pins.onPulsed(pin, PulseValue.High, handle);
+        pins.setEvents(pin, PinEventType.Edge);
+        control.onEvent(pin, DAL.MICROBIT_PIN_EVT_RISE, handle);
     }
 
     //% blockId=CrocoKit_Sensor_Hall block="Hall|pin %pin|get "
@@ -198,9 +201,11 @@ namespace CrocoKit_Sensor {
     //% color="#228B22"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=5
     export function Hall(pin: DigitalPin, handle: () => void): void {
-        pins.setPull(pin, PinPullMode.PullUp);
-        pins.setEvents(pin, PinEventType.Pulse);
-        pins.onPulsed(pin, PulseValue.High, handle);
+        // pins.setPull(pin, PinPullMode.PullUp);
+        // pins.setEvents(pin, PinEventType.Pulse);
+        // pins.onPulsed(pin, PulseValue.High, handle);
+        pins.setEvents(pin, PinEventType.Edge);
+        control.onEvent(pin, DAL.MICROBIT_PIN_EVT_RISE, handle);
 
     }
 }
